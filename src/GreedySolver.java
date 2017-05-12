@@ -8,7 +8,7 @@ public class GreedySolver extends KnapsackSolver {
    
    @Override
    public KnapsackSolution solve() {
-   
+      long startTime = System.nanoTime();
       KnapsackSolution greedy = new KnapsackSolution();
       
       greedy.items = new ArrayList<Item>(items);
@@ -30,8 +30,11 @@ public class GreedySolver extends KnapsackSolver {
       greedy.items = greedy.items.subList(0, i);
       greedy.weight = capUsed;
       greedy.value = value;
+      long endTime = System.nanoTime();
+      long totalTime = endTime - startTime;
+
       greedy.approach = "Greedy solution (not necessarily optimal)";
-      
+      System.out.println("Runtime " + totalTime/1000);
       return greedy;
    }
 }

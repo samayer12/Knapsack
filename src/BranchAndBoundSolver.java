@@ -49,7 +49,7 @@ public class BranchAndBoundSolver extends KnapsackSolver {
    
    @Override
    public KnapsackSolution solve() {
-      
+      long startTime = System.nanoTime();
       Collections.sort(items, Item.byRatio());
       
       Node best = new Node();
@@ -95,8 +95,10 @@ public class BranchAndBoundSolver extends KnapsackSolver {
       solution.value = best.value;
       solution.weight = best.weight;
       solution.items = best.taken;
+      long endTime = System.nanoTime();
+      long totalTime = endTime - startTime;
       solution.approach = "Using Branch and Bound the best feasible solution found";
-      
+      System.out.println("Runtime " + totalTime/1000);
       return solution;
    }
 }

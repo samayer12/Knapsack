@@ -8,6 +8,7 @@ public class BruteForceSolver extends KnapsackSolver {
    
    @Override
    public KnapsackSolution solve() {
+      long startTime = System.nanoTime();
       KnapsackSolution best = new KnapsackSolution();
       best.items = new LinkedList<Item>();
       for (List<Item> subset : subsets(items)) {
@@ -21,8 +22,11 @@ public class BruteForceSolver extends KnapsackSolver {
             }
          }
       }
+      long endTime = System.nanoTime();
+      long totalTime = endTime - startTime;
       
       best.approach = "Using Brute force the best feasible solution found";
+      System.out.println("Runtime " + totalTime/1000);
       return best;
    }
    

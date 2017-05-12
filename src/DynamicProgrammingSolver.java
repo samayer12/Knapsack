@@ -10,8 +10,8 @@ public class DynamicProgrammingSolver extends KnapsackSolver {
    
    @Override
    public KnapsackSolution solve() {
-      
-      
+
+      long startTime = System.nanoTime();
       table = new double[capacity + 1][items.size()];
       
       for (int j = 0; j < capacity + 1; j++)
@@ -21,8 +21,10 @@ public class DynamicProgrammingSolver extends KnapsackSolver {
       getCell(capacity, items.size() - 1);
       
       KnapsackSolution best = traceTable();
-      
+      long endTime = System.nanoTime();
+      long totalTime = endTime - startTime;
       best.approach = "Dynamic Programming solution";
+      System.out.println("Runtime " + totalTime/1000);
       return best;
    }
    
